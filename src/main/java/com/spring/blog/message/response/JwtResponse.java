@@ -3,7 +3,7 @@ package com.spring.blog.message.response;
 public class JwtResponse {
 	
    private String token;
-   private String type = "Bearer";
+   private String type = "JWT";
 
    public JwtResponse(String accessToken) {
        this.token = accessToken;
