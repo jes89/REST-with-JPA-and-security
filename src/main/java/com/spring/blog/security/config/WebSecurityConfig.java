@@ -4,6 +4,8 @@ package com.spring.blog.security.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -37,7 +39,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public JwtAuthTokenFilter authenticationJwtTokenFilter() {
         return new JwtAuthTokenFilter();
     }
- 
+    
+    @Bean
+    public RoleHierarchy roleHierarchy() {
+      RoleHierarchyImpl r = new RoleHierarchyImpl();
+      r.setHierarchy("ROLE_ADMIN > ROLE_PM and ROLE_PM > ROLE_DEVELOPER and ROLE_PM > ROLE_DESIGNER and ROLE_DEVELOPER > ROLE_USER and ROLE_DEVELOPER > ROLE_USER and ROLE_DESIGNER > ROLE_USER");
+      return r;
+    }
+    
     @Override
     public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder
