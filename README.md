@@ -2,6 +2,6 @@
 
 Spring boot
 - JPA
-- Security
+- Security with role hierarchy
 - RESTful API
 - JWT
