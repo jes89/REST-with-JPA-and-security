@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/ajs?characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: 1111
+  jpa:
+    generate-ddl: true
+security:
+  roles:
+    hierarchy:
+      ROLE_ADMIN: ROLE_PM
+      ROLE_PM : ROLE_DEVELOPER, ROLE_DESIGNER 
+      ROLE_DEVELOPER: ROLE_USER
+      ROLE_DESIGNER: ROLE_USER
+grokonez:
+  app:
+    jwtSecret: jwtGrokonezSecretKey
+    jwtExpiration: 86400
