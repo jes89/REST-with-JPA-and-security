@@ -1,5 +1,7 @@
 package com.spring.blog.model;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -41,9 +43,15 @@ public class Contents {
     
     @NotBlank
     @Column
-    private String regDtm;
+    private String regDtm = this.getCurrentTime();
     
-
+	private String getCurrentTime() {
+		
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		Date now = Calendar.getInstance().getTime();
+		return simpleDateFormat.format(now);
+	}
+    
 	public Long getIdx() {
 		return idx;
 	}

@@ -1,9 +1,5 @@
 package com.spring.blog.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,10 +24,6 @@ public class ContentsRestAPIs {
 	@PostMapping("/insert")
 //	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 	public ResponseEntity<?> insertContents(@RequestBody Contents contents) {
-		
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		Date now = Calendar.getInstance().getTime();
-		contents.setRegDtm(simpleDateFormat.format(now));
 		contentsRepository.save(contents);
 		return ResponseEntity.ok("success");
 	}
