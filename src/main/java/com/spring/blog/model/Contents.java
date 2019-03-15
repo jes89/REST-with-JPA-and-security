@@ -27,7 +27,7 @@ import com.spring.blog.listener.ContentsListener;
 public class Contents {
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 	
     @NotBlank

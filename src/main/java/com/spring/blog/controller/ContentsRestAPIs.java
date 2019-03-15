@@ -23,20 +23,20 @@ public class ContentsRestAPIs {
 	private ContentsRepository contentsRepository;
 	
 	@PostMapping("/insert")
-	@PreAuthorize("hasRole('ROLE_USER')")
 	public ResponseEntity<?> insertContents(@RequestBody Contents contents) {
-		contentsRepository.save(contents);
+		Contents savedContents = (Contents)contentsRepository.save(contents);
+		
+		System.out.println(savedContents.getIdx());
+		
 		return ResponseEntity.ok("success");
 	}
 	
 	@GetMapping("/contentsList")
-	@PreAuthorize("hasRole('ROLE_USER')")
 	public ResponseEntity<?> getContentsList() {
 		return ResponseEntity.ok(contentsRepository.findAll());
 	}
 	
 	@GetMapping("/contentsView")
-	@PreAuthorize("hasRole('ROLE_USER')")
 	public ResponseEntity<?> getContentsView(@RequestBody long contIdx) {
 		
 		Contents contents =	contentsRepository.getOne(contIdx);
@@ -49,7 +49,6 @@ public class ContentsRestAPIs {
 	}
 	
 	@PutMapping("/update")
-	@PreAuthorize("hasRole('ROLE_USER')")
 	public ResponseEntity<?> updateContents(@RequestBody long contIdx ,@RequestBody String title, @RequestBody String contents){
 		
 		Contents selectedContents =	contentsRepository.getOne(contIdx);
@@ -67,7 +66,6 @@ public class ContentsRestAPIs {
 	}
 	
 	@DeleteMapping("/delete")
-	@PreAuthorize("hasRole('ROLE_USER')")
 	public ResponseEntity<?> deleteContents(@RequestBody long contIdx){
 		contentsRepository.deleteById(contIdx);
 		return ResponseEntity.ok("success");
