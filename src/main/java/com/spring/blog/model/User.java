@@ -21,7 +21,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.annotations.NaturalId;
  
 @Entity
-@Table(name = "users", uniqueConstraints = {
+@Table(name = "users", schema = "ajs",  uniqueConstraints = {
         @UniqueConstraint(columnNames = {
             "username"
         }),

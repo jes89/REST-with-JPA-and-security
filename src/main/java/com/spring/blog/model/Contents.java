@@ -19,7 +19,7 @@ import com.spring.blog.listener.ContentsListener;
 
 @Entity
 @EntityListeners(ContentsListener.class)
-@Table(name = "contents", uniqueConstraints = {
+@Table(name = "contents", schema = "ajs",  uniqueConstraints = {
         @UniqueConstraint(columnNames = {
             "idx"
         }),

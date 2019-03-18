@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.NaturalId;
  
 @Entity
-@Table(name = "roles")
+@Table(name = "roles", schema = "ajs")
 public class Role {
 	
     @Id
